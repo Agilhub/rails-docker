@@ -1,0 +1,21 @@
+####
+# ATENTION:
+# Replace all occurences of sandbox with your project's name
+####
+
+version: '2'
+
+services:
+  postgres:
+    image: postgres
+    container_name: sandbox-postgres
+  app:
+    build: .
+    container_name: sandbox-app
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/sandbox
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
