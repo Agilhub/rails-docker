@@ -9,6 +9,8 @@ services:
   postgres:
     image: postgres
     container_name: sandbox-postgres
+    ports:
+      - "5432:5432"
   app:
     build: .
     container_name: sandbox-app
