@@ -25,7 +25,7 @@ curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/Gemfile -o
 curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/Gemfile.lock -o Gemfile.lock
 ```
 
-### Sobre esses arquivos
+#### Sobre esses arquivos
  - **DockerFile**: este arquivo contém informações sobre o container usado e os comandos para configurá-lo como ``bundle install``.
  - **docker-compose.yml**: Este arquivo contém informações sobre os serviços do container e o comando para executar o aplicativo Rails.
  - **Gemfile**: este arquivo apenas carrega Rails. Ele será substituído pelo comando ``rails new``.

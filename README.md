@@ -1,6 +1,8 @@
 # Rails Docker
 Simple configuration to run Ruby On Rails in a Docker environment.
 
+*[Documentação em PT-BR](https://github.com/Agilhub/rails-docker/blob/master/README-PT_BR.md)*
+
 The objective of this repository is provide a simple way to get start work in a Ruby On Rails with PostgreSQL app on Docker by simple steps and minimal files.
 
 This solution works in Linux, MacOS and Windows, any problem feel free to create a issue.
@@ -25,7 +27,7 @@ curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/Gemfile -o
 curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/Gemfile.lock -o Gemfile.lock
 ```
 
-### About this files
+#### About this files
  - **DockerFile**: this file contains information about the container used and the command to configure him like ``bundle install``.
  - **docker-compose.yml**: This file contains informations about the services of the container and the command for run the Rails app.
  - **Gemfile**: this file just loads Rails. It’ll be overwritten by ``rails new`` command.
