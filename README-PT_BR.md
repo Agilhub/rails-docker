@@ -11,13 +11,13 @@ Esta solução funciona em Linux, MacOS e Windows, qualquer problema sinta-se li
   - Conhecimento mínimo sobre linha de comando.
 
 ## Para novos projetos
-**Crie uma pasta com o nome do seu projeto e vá para ele:**
+**1 - Crie uma pasta com o nome do seu projeto e vá para ele:**
 ```
 mkdir your-app-name
 cd your-app-name
 ```
 
-**Faça o download dos quatro arquivos necessários:**
+**2 - Faça o download dos quatro arquivos necessários:**
 ```
 curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/Dockerfile -o Dockerfile
 curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/docker-compose.yml -o docker-compose.yml
@@ -31,24 +31,24 @@ curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/Gemfile.lo
  - **Gemfile**: este arquivo apenas carrega Rails. Ele será substituído pelo comando ``rails new``.
  - **Gemfile.lock**: apenas um arquivo vazio necessário para construir nosso Dockerfile.
 
-**Abra o DockerFile e o docker-compose.yml no seu editor de texto preferido e substitua todas as ocorrências de "sandbox" por "your-app-name".**
+**3 - Abra o DockerFile e o docker-compose.yml no seu editor de texto preferido e substitua todas as ocorrências de "sandbox" por "your-app-name".**
 
-**hora de dar um build no projeto, crie os arquivos do Rails usando ``docker-compose run``:**
+**4 - hora de dar um build no projeto, crie os arquivos do Rails usando ``docker-compose run``:**
 ```
 docker-compose run --rm app rails new . --force --database=postgresql --skip-bundle
 ```
 
-*Se você estiver executando o Docker no Linux, os arquivos criados pelo ``rails new`` são propriedade do root. Isso acontece porque o container é executado como o usuário root. Altere a propriedade dos novos arquivos:*
+*4.1 - Se você estiver executando o Docker no Linux, os arquivos criados pelo ``rails new`` são propriedade do root. Isso acontece porque o container é executado como o usuário root. Altere a propriedade dos novos arquivos:*
 ```
 sudo chown -R $USER:$USER .
 ```
 
-**Neste ponto, o comando ``rails new`` modifica o Gemfile, então precisamos executar o comando ``docker-compose build`` (e sempre que o GemFile for modificado, como novas gems instaladas):**
+**5 - Neste ponto, o comando ``rails new`` modifica o Gemfile, então precisamos executar o comando ``docker-compose build`` (e sempre que o GemFile for modificado, como novas gems instaladas):**
 ```
 docker-compose build
 ```
 
-**Agora vamos conectar ao banco de dados, abra o arquivo ``config/database.yml`` e modifique-o para parecer assim:**
+**6 - Agora vamos conectar ao banco de dados, abra o arquivo ``config/database.yml`` e modifique-o para parecer assim:**
 ```
 development:
   <<: *default
@@ -65,12 +65,12 @@ test:
   host: postgres
 ```
 
-**Agora você pode iniciar o aplicativo com:**
+**7 - Agora você pode iniciar o aplicativo com:**
 ```
 docker-compose up
 ```
 
-**Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
+**8 - Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
 ```
 docker-compose exec app rake db:create
 ```
@@ -79,20 +79,20 @@ docker-compose exec app rake db:create
 
 
 ## Para projetos existentes
-**Você só precisa baixar os dois arquivos necessários**
+**1 - Você só precisa baixar os dois arquivos necessários**
 ```
 curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/Dockerfile -o Dockerfile
 curl -L https://raw.githubusercontent.com/Agilhub/rails-docker/master/docker-compose.yml -o docker-compose.yml
 ```
 
-**Abra o DockerFile e o docker-compose.yml no seu editor de texto preferido e substitua todas as ocorrências de "sandbox" por "your-app-name".**
+**2 - Abra o DockerFile e o docker-compose.yml no seu editor de texto preferido e substitua todas as ocorrências de "sandbox" por "your-app-name".**
 
-**Agora vamos dar um build no projeto, execute o comando abaixo (e toda vez que o GemFile for modificado, como novas gemas instaladas):**
+**3 - Agora vamos dar um build no projeto, execute o comando abaixo (e toda vez que o GemFile for modificado, como novas gemas instaladas):**
 ```
 docker-compose build
 ```
 
-**Vamos conectar ao banco de dados, abra o arquivo ``config/database.yml`` e modifique-o para parecer assim:**
+**4 - Vamos conectar ao banco de dados, abra o arquivo ``config/database.yml`` e modifique-o para parecer assim:**
 ```
 development:
   <<: *default
@@ -109,12 +109,12 @@ test:
   host: postgres
 ```
 
-**Agora você pode iniciar o aplicativo com:**
+**5 - Agora você pode iniciar o aplicativo com:**
 ```
 docker-compose up
 ```
 
-**Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
+**6 - Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
 ```
 docker-compose exec app rake db:create
 ```
