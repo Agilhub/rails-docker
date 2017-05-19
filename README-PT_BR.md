@@ -65,12 +65,18 @@ test:
   host: postgres
 ```
 
-**7 - Agora você pode iniciar o aplicativo com:**
+**7 - Abra o arquivo ``config/environments/development.rb`` e adicione a seguinte linha:**
+```
+config.reload_classes_only_on_change = false
+```
+*Isso é necessário para que você não precise reiniciar o container para cada mudança nos arquivos ``.rb``*
+
+**8 - Agora você pode iniciar o aplicativo com:**
 ```
 docker-compose up
 ```
 
-**8 - Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
+**9 - Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
 ```
 docker-compose exec app rake db:create
 ```
@@ -109,12 +115,18 @@ test:
   host: postgres
 ```
 
-**5 - Agora você pode iniciar o aplicativo com:**
+**5 - Abra o arquivo ``config/environments/development.rb`` e adicione a seguinte linha:**
+```
+config.reload_classes_only_on_change = false
+```
+*Isso é necessário para que você não precise reiniciar o container para cada mudança nos arquivos ``.rb``*
+
+**6 - Agora você pode iniciar o aplicativo com:**
 ```
 docker-compose up
 ```
 
-**6 - Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
+**7 - Finalmente, você precisa criar o banco de dados. Em outro terminal, execute:**
 ```
 docker-compose exec app rake db:create
 ```
